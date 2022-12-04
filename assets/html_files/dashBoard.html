@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css"
+      integrity="sha512-MV7K8+y+gLIBoVD59lQIYicR65iaqukzvf/nwasF0nqhPay5w/9lJmVM2hMDcnK1OnMGCdVK+iQrJ7lzPJQd1w=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi"
+      crossorigin="anonymous"
+    />
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3"
+      crossorigin="anonymous"
+    ></script>
+    <link rel="stylesheet" href="../stylesheets/login&Signup_stylesheet.css" />
+    <link rel="stylesheet" href="../stylesheets/dashBoardStylesheet.css" />
+    <title>Socialize</title>
+  </head>
+  <body>
+    <script>
+      if(sessionStorage.getItem('currentUser')==null){
+        window.location.replace('../../index.html')
+      }
+    </script>
+    <div
+      class="d-flex justify-content-between pt-2 px-4  header"
+      style="color: #fcfcfc"
+    >
+      <div class="d-flex mb-2">
+        <img src="../images/logo.png" class="logo-img" alt="Logo Images" />
+        <h3 class="pt-1 logo-heading ms-2">Socialize</h3>
+      </div>
+      <div class="d-flex header-right">
+        <div class="search-box me-3 mb-2">
+          <input class="search ms-2 pt-1" type="text" placeholder="Search" />
+          <button class="search-button px-2 pt-1">
+            <i class="fa-solid fa-magnifying-glass search-icon"></i>
+          </button>
+        </div>
+        <button class="btn create-btn py-0 me-3 mb-2">
+          <i class="fa-solid fa-plus"></i> Create Post
+        </button>
+        <div class="btn-group">
+        <button class="btn p-0 dropdown-toggle dropdown-toggle-split" data-bs-toggle="dropdown" aria-expanded="false"">
+          <img
+            src="../images/userPic.jpg"
+            class="user-img-bar"
+            alt="not found"
+          />
+        </button>
+        <ul class="dropdown-menu">
+          <li onclick="handleUpdate()"><a class="dropdown-item" href="profileEdit.html">Update Profile</a></li>
+          <li onclick="handleDelete(event)"><a class="dropdown-item" >Delete Account</a></li>
+          <li onclick="handleLogout(event)"><a class="dropdown-item">Logout</a></li>
+        </ul>
+      </div>
+    </div>
+      </div>
+    </div>
+    <div class="row justify-content-evenly main-container m-0 pt-3 pb-5">
+      <!-- col 1 -->
+      <div class="col-md-3 scroll my-3">
+        <div class="dp-box d-flex  m-auto">
+          <img src="../images/userPic.jpg" class="dp fluid-img mt-4 ms-2" alt="dp" />
+          <div class="ms-2 p-2 ">
+          <h3 class="mt-3 mb-0 subheading userName"></h3>
+          <p class="bio">
+            Social Influcer, youtuber, Social Activist
+          </p>
+        </div>
+        </div>
+
+        <div class="dp-box py-4 mt-3 m-auto">
+          <h3 class=" mb-3 subheading text-center">Suggestions</h3>
+          <div class="d-flex flex-wrap justify-content-center" id="tags">
+            
+              <!-- html for tag will be fetched using JS  -->
+            
+          </div>
+        </div>
+        <div class="mt-3 dp-box px-0 mb-3">
+          <ul class="chat_sidebar ps-0 ">
+            <li class="chats">
+              <div class="d-flex p-2">
+                <i class="fa-solid fa-house sidebar-icon ps-4 pe-2 pt-2"></i>
+                <p class="align-middle friend-name  mb-0">Home</p>
+              </div>
+            </li>
+            <li class="chats">
+              <div class="d-flex  p-2">
+                <i class="fa-solid fa-people-group sidebar-icon ms-4 me-2 pt-2"></i>
+                <p class="align-middle friend-name  mb-0">Groups</p>
+              </div>
+            </li>
+            <li class="chats">
+              <div class="d-flex  p-2">
+                <i class="fa-solid fa-image sidebar-icon ms-4 me-2 pt-2"></i>
+                <p class="align-middle friend-name  mb-0">Photos</p>
+              </div>
+            </li>
+            <li class="chats">
+              <div class="d-flex  p-2">
+                <i class="fa-regular fa-calendar-days sidebar-icon ms-4 me-2 pt-2"></i>
+                <p class="align-middle friend-name  mb-0">News Feed</p>
+              </div>
+            </li>
+            <li class="chats">
+              <div class="d-flex  p-2">
+                <i class="fa-solid fa-user sidebar-icon ms-4 me-2 pt-2"></i>
+                <p class="align-middle friend-name  mb-0">Profile</p>
+              </div>
+            </li>
+            <li class="chats">
+              <div class="d-flex  p-2">
+                <i class="fa-solid fa-gear sidebar-icon ms-4 me-2 pt-2"></i>
+                <p class="align-middle friend-name  mb-0">Settings</p>
+              </div>
+            </li>
+          </ul>
+        </div>
+      </div>
+      <!-- col 2 -->
+      <div class="col-md-5 pb-0 my-3 second-column" onscroll="addMorePost(event)">
+        <div class="chat-area" >
+          <div class="post-container" >
+            <!-- html for Post will be fetched using JS  -->
+          </div>
+        </div>
+      </div>
+
+      <!-- col-3  -->
+
+      <div class="col-md-3 my-3 scroll">
+        <div class="last-column">
+          <div class="me-2">
+        <div class="dp-box px-3 mb-2 pb-3">
+        <div class="d-flex ">
+          <img src="../images/5.jpg" class="img-icon fluid-img mt-4" alt="not found" />
+          <p class="lighter-text mt-4 ms-2">
+           <b>Emma Watson</b> wants to connect with you
+          </p>
+        </div>
+        <div class="d-flex justify-content-between px-2 friend-request"> 
+          <button class="btn btn-primary px-4 mb-2">Accept</button>
+          <button class="btn btn-light px-4 mb-2">Decline</button>
+        </div>
+      </div>
+      <div class="dp-box px-3 mb-3 pb-3">
+        <div class="d-flex ">
+          <img src="../images/6.jpg" class="img-icon fluid-img mt-4" alt="not found" />
+          <p class="lighter-text mt-4 ms-2">
+           <b>Selena Gomez</b> wants to connect with you
+          </p>
+        </div>
+        <div class="d-flex justify-content-between px-2 friend-request"> 
+          <button class="btn btn-primary px-4 mb-2">Accept</button>
+          <button class="btn btn-light px-4 mb-2">Decline</button>
+        </div>
+      </div>
+    </div>
+    <div>
+        <h3 class="friend-list-heading p-2  mb-0">Friend List</h3>
+
+        <ul class="chat_sidebar friends ps-0">
+          <!-- html for friend list will be fetched using JS  -->
+        </ul>
+      </div>
+      </div>
+      </div>
+    </div>
+
+    <script type="module" src="../script_files/dashBoard.js"></script>
+    <script type="module" src="../script_files/accountOperations.js"></script>
+  </body>
+</html>

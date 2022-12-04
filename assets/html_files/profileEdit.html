@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <title class="responsive-font-example">Socialize</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi"
+      crossorigin="anonymous"
+    />
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3"
+      crossorigin="anonymous"
+    ></script>
+    <link rel="stylesheet" href="../stylesheets/dashBoardStylesheet.css">
+  </head>
+
+  <body style="overflow: auto; height: auto">
+    <div
+      class="d-flex justify-content-between pt-2 px-4  header"
+      style="color: #fcfcfc"
+    >
+      <div class="d-flex mb-2">
+        <img src="../images/logo.png" class="logo-img" alt="Logo Images" />
+        <h3 class="pt-1 logo-heading ms-2">Socialize</h3>
+      </div>
+      <div class="d-flex header-right">
+        <div class="search-box me-3 mb-2">
+          <input class="search ms-2 pt-1" type="text" placeholder="Search" />
+          <button class="search-button px-2 pt-1">
+            <i class="fa-solid fa-magnifying-glass search-icon"></i>
+          </button>
+        </div>
+        <button class="btn create-btn py-0 me-3 mb-2">
+          <i class="fa-solid fa-plus"></i> Create Post
+        </button>
+        <div class="btn-group">
+        <button class="btn p-0 dropdown-toggle dropdown-toggle-split" data-bs-toggle="dropdown" aria-expanded="false"">
+          <img
+            src="../images/userPic.jpg"
+            class="user-img-bar"
+            alt="not found"
+          />
+        </button>
+        <ul class="dropdown-menu">
+          <li onclick="handleUpdate()"><a class="dropdown-item" href="profileEdit.html">Update Profile</a></li>
+          <li onclick="handleDelete(event)"><a class="dropdown-item" >Delete Account</a></li>
+          <li onclick="handleLogout(event)"><a class="dropdown-item">Logout</a></li>
+        </ul>
+      </div>
+    </div>
+      </div>
+    </div>
+    <div class="w-50 my-2 m-auto bg-white rounded py-3 px-5 mt-2 border border-radius-2">
+      <form action="#" name="editForm">
+        <div >
+          <h1 class="mt-2 mb-2 text-center fs-3 logo-heading">Edit your Profile here</h1>
+        </div>
+        <div class="row mt-1">
+          <div class="col-md">
+            <label for="what" class="form-label fw-semibold ">First Name</label>
+            <input type="text" class="form-control bg-light rounded-1" name="fname" id="first Name" required/>
+          </div>
+          <div class="col">
+            <label for="what" class="form-label fw-semibold ">Last Name</label>
+            <input type="text" class="form-control bg-light rounded-1" name="lname" id="Last Name" required/>
+          </div>
+        </div>
+
+        <div class="row mt-3">
+          <div class="col-md">
+            <label for="what" class="form-label fw-semibold " >Birthday</label>
+            <input type="date" class="form-control bg-light rounded-1" name="birthday" id="Birthday" required/>
+          </div>
+          <div class="col-md">
+            <label for="what" class="form-label fw-semibold ">Gender</label>
+            <div class="row">
+              <div class="col-md">
+                <div class="form-check">
+                  <input
+                    class="form-check-input"
+                    type="radio"
+                    name="male"
+                    id="exampleRadios1"
+                    value="male"
+                    
+                  />
+                  <label class="form-check-label fw-semibold " for="exampleRadios1">
+                    Male
+                  </label>
+                </div>
+              </div>
+              <div class="col">
+                <div class="form-check">
+                  <input
+                    class="form-check-input"
+                    type="radio"
+                    name="female"
+                    id="exampleRadios1"
+                    
+                  />
+                  <label class="form-check-label fw-semibold " for="exampleRadios1">
+                    Female
+                  </label>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="row mt-3">
+          <div class="col-md">
+            <label for="what" class="form-label fw-semibold ">Email</label>
+            <input type="text" class="form-control bg-light rounded-1" name="email" id="Email" required/>
+          </div>
+          <div class="col">
+            <label for="what" class="form-label fw-semibold ">Phone Number</label>
+            <input type="text" class="form-control bg-light rounded-1" name="contact" id="Phone" pattern="/[0-9]{11}/" required/>
+          </div>
+        </div>
+
+        <div class="row mt-3">
+          <div class="col-md">
+            <label for="what" class="form-label fw-semibold ">Password</label>
+            <input type="password"  class="form-control bg-light rounded-1" name="password" id="Email" required/>
+          </div>
+          <div class="col">
+            <label for="what" class="form-label fw-semibold ">Confirm Password</label>
+            <input type="password" class="form-control bg-light rounded-1" name="confirmPassword" id="Phone" required/>
+          </div>
+        </div>
+        <div class="row  mt-3">
+          <div class="col d-flex flex-column align-items-center">
+            <button type="button" id="editBtn"  class="btn btn-primary py-2 px-5 fw-semibold opacity-75" type="submit">Update</button>
+          </div>
+        </div>
+      </form>
+    </div>
+
+    <script type="module" src="../script_files/editProfile.js"></script>
+    <script type="module" src="../script_files/accountOperations.js"></script>
+  </body>
+</html>
